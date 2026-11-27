@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#764ba2">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="ASRD College">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <script src="config.js"></script>
+    <meta name="description" content="Anam Sanjeeva Reddy Degree College, Atmakur - B.A., B.Sc. and B.Com programs. Excellence in education.">
+    <title>Anam Sanjeeva Reddy Degree College - Excellence in Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>document.documentElement.classList.add("js")</script>
+    <style>
+:root {
+    --p1: #667eea;
+    --p2: #764ba2;
+    --p3: #f093fb;
+    --dark: #14122b;
+    --text: #333;
+    --grad: linear-gradient(135deg, var(--p1) 0%, var(--p2) 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    overflow-x: hidden;
+    background: #fff;
+}
+
+img { max-width: 100%; display: block; }
+
+/* Scroll progress */
+.scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0;
+    background: linear-gradient(90deg, var(--p3), var(--p1));
+    z-index: 2000;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed; top: 0; width: 100%;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000; padding: 1rem 0;
+    transition: all .3s ease;
+}
+.navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.08); padding: .7rem 0; background: rgba(255,255,255,.97); }
+.nav-container {
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+    font-size: 1.6rem; font-weight: 700; text-decoration: none;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.nav-menu { display: flex; list-style: none; gap: 2rem; }
+.nav-menu a {
+    text-decoration: none; color: var(--text); font-weight: 500;
+    position: relative; transition: color .3s;
+}
+.nav-menu a:hover, .nav-menu a.active { color: var(--p1); }
+.nav-menu a::after {
+    content: ''; position: absolute; left: 0; bottom: -5px; height: 2px; width: 0;
+    background: var(--grad); transition: width .3s;
+}
+.nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+.hamburger { display: none; flex-direction: column; background: none; border: 0; cursor: pointer; padding: 4px; }
+.hamburger span { width: 25px; height: 3px; background: var(--text); margin: 3px 0; transition: .3s; border-radius: 2px; }
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3a2f8f 0%, var(--p2) 55%, #b45fc9 100%);
+    color: #fff; position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 110px 2rem 70px;
+}
+.hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at 60% 50%, #000 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at 60% 50%, #000 0%, transparent 75%);
+}
+.orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; animation: drift 14s ease-in-out infinite; }
+.orb-1 { width: 380px; height: 380px; background: #f093fb; top: -80px; left: -100px; }
+.orb-2 { width: 320px; height: 320px; background: #4ecdc4; bottom: -90px; right: 20%; animation-delay: -5s; opacity: .35; }
+.orb-3 { width: 240px; height: 240px; background: #667eea; top: 30%; right: -60px; animation-delay: -9s; }
+@keyframes drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px,-30px); } }
+
+.hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center;
+    position: relative; z-index: 2;
+}
+.hero-content { animation: fadeInUp 1s ease both; }
+.badge {
+    display: inline-block; padding: .4rem 1.1rem; border-radius: 50px;
+    background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(8px); font-size: .85rem; font-weight: 500; margin-bottom: 1.4rem;
+}
+a.badge { color: #fff; text-decoration: none; transition: background .3s, transform .3s; }
+a.badge:hover { background: rgba(255,255,255,.3); transform: translateY(-2px); }
+.badge i { color: #ffd86b; margin-right: .3rem; }
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.6rem); line-height: 1.1; margin-bottom: 1.3rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,.25);
+}
+.grad-text {
+    background: linear-gradient(90deg, #ffe29f, #ffa99f, #f093fb);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+.hero p { font-size: 1.2rem; opacity: .95; margin-bottom: 2rem; max-width: 520px; }
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .95rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 600;
+    transition: all .3s ease; border: 2px solid transparent;
+}
+.btn-primary { background: #fff; color: var(--p2); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+.btn-primary i { transition: transform .3s; }
+.btn-primary:hover i { transform: translateX(5px); }
+.btn-ghost { color: #fff; border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.1); backdrop-filter: blur(8px); }
+.btn-ghost:hover { background: rgba(255,255,255,.25); transform: translateY(-4px); }
+
+.scroll-hint {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    color: #fff; font-size: 1.3rem; animation: bounce 2s infinite; z-index: 3; opacity: .8;
+}
+@keyframes bounce { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,10px); } }
+
+/* 3D scene */
+.scene {
+    --rx: -20deg; --ry: 30deg;
+    perspective: 1100px; height: 420px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+}
+.cube {
+    --size: 200px;
+    width: var(--size); height: var(--size); position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform .15s ease-out;
+    animation: spin 22s linear infinite;
+}
+.scene.interacting .cube { animation-play-state: paused; }
+@keyframes spin {
+    from { transform: rotateX(var(--rx)) rotateY(0deg); }
+    to   { transform: rotateX(var(--rx)) rotateY(360deg); }
+}
+.face {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5rem;
+    background: linear-gradient(145deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
+    border: 1.5px solid rgba(255,255,255,.55);
+    backdrop-filter: blur(6px);
+    box-shadow: inset 0 0 40px rgba(255,255,255,.18), 0 0 30px rgba(240,147,251,.25);
+    border-radius: 14px; color: #fff;
+}
+.face i { font-size: 3rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,.3)); }
+.face span { font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; }
+.front  { transform: translateZ(calc(var(--size) / 2)); }
+.back   { transform: rotateY(180deg) translateZ(calc(var(--size) / 2)); }
+.right  { transform: rotateY(90deg)  translateZ(calc(var(--size) / 2)); }
+.left   { transform: rotateY(-90deg) translateZ(calc(var(--size) / 2)); }
+.top    { transform: rotateX(90deg)  translateZ(calc(var(--size) / 2)); }
+.bottom { transform: rotateX(-90deg) translateZ(calc(var(--size) / 2)); }
+
+.ring {
+    position: absolute; border-radius: 50%; border: 2px dashed rgba(255,255,255,.4);
+    top: 50%; left: 50%; transform-style: preserve-3d;
+}
+.ring-1 { width: 340px; height: 340px; margin: -170px 0 0 -170px; transform: rotateX(72deg); animation: ringspin 18s linear infinite; }
+.ring-2 { width: 400px; height: 400px; margin: -200px 0 0 -200px; transform: rotateX(72deg) rotateY(25deg); animation: ringspin 28s linear infinite reverse; border-color: rgba(255,226,159,.35); }
+@keyframes ringspin { to { rotate: z 360deg; } }
+
+.float-chip {
+    position: absolute; width: 58px; height: 58px; border-radius: 16px;
+    display: grid; place-items: center; font-size: 1.4rem; color: #fff;
+    background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.45);
+    backdrop-filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    animation: floaty 6s ease-in-out infinite;
+}
+.chip-1 { top: 6%; left: 8%; }
+.chip-2 { bottom: 8%; right: 6%; animation-delay: -2s; }
+.chip-3 { top: 18%; right: 2%; animation-delay: -4s; width: 48px; height: 48px; font-size: 1.1rem; }
+@keyframes floaty { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-18px) rotate(6deg); } }
+
+/* Stats */
+.stats-wrap { margin-top: -50px; position: relative; z-index: 5; padding: 0 2rem; }
+.stats {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+}
+.stat {
+    background: #fff; border-radius: 20px; padding: 1.8rem 1rem; text-align: center;
+    box-shadow: 0 15px 45px rgba(102,126,234,.2);
+}
+.stat h3 { font-size: 2.3rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.stat p { color: #777; font-size: .92rem; }
+
+/* Sections */
+.section { padding: 100px 2rem; max-width: 1200px; margin: 0 auto; }
+.section-title {
+    text-align: center; font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.7rem); margin-bottom: 1rem;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.section-title.light { background: none; -webkit-text-fill-color: #fff; color: #fff; margin-bottom: 3rem; }
+.section-sub { text-align: center; color: #777; margin-bottom: 3rem; }
+
+/* About */
+.about { max-width: none; background: #f8fafc; margin-top: 60px; }
+.about > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+.about-text h3 { font-size: 1.8rem; color: var(--p1); margin-bottom: 1rem; }
+.about-text p { font-size: 1.05rem; color: #666; margin-bottom: 1.2rem; }
+.checks { list-style: none; margin-top: 1.5rem; }
+.checks li { padding: .35rem 0; font-weight: 500; }
+.checks i { color: #4ecdc4; margin-right: .6rem; }
+.about-image { position: relative; }
+.about-image img { border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,.18); width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.img-badge {
+    position: absolute; bottom: -20px; left: -20px; background: var(--grad); color: #fff;
+    border-radius: 18px; padding: 1rem 1.4rem; text-align: center; line-height: 1.1;
+    box-shadow: 0 15px 35px rgba(118,75,162,.45); transform: translateZ(50px);
+}
+.img-badge strong { display: block; font-size: 2rem; }
+
+/* 3D tilt */
+.tilt { transform-style: preserve-3d; transition: transform .15s ease-out, box-shadow .3s; will-change: transform; position: relative; }
+.tilt .glare {
+    position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.35), transparent 55%);
+    opacity: 0; transition: opacity .3s;
+}
+.tilt:hover .glare { opacity: 1; }
+
+/* Flip cards */
+.courses-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 2.2rem;
+    perspective: 1400px;
+}
+.flip-card { height: 360px; outline: none; cursor: pointer; }
+.flip-inner {
+    position: relative; width: 100%; height: 100%;
+    transform-style: preserve-3d; transition: transform .8s cubic-bezier(.4, .2, .2, 1);
+}
+.flip-card:hover .flip-inner,
+.flip-card:focus .flip-inner,
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+.flip-face {
+    position: absolute; inset: 0; border-radius: 24px; padding: 2.2rem;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+    color: #fff; overflow: hidden;
+    box-shadow: 0 25px 55px rgba(0,0,0,.18);
+}
+.flip-face.arts     { background: linear-gradient(145deg, #ff6b6b, #c44569); }
+.flip-face.science  { background: linear-gradient(145deg, #4ecdc4, #2a8f9d); }
+.flip-face.commerce { background: linear-gradient(145deg, #45b7d1, #4a69bd); }
+.flip-front .glow {
+    position: absolute; width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(255,255,255,.2); top: -60px; right: -60px;
+}
+.flip-front i { font-size: 4rem; margin-bottom: 1.2rem; filter: drop-shadow(0 8px 14px rgba(0,0,0,.3)); transform: translateZ(40px); position: relative; }
+.flip-front h3 { font-size: 1.7rem; margin-bottom: .6rem; position: relative; }
+.flip-front p { opacity: .92; position: relative; }
+.flip-front .hint {
+    position: absolute; bottom: 20px; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85;
+}
+.flip-back { transform: rotateY(180deg); }
+.flip-back h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1.2rem; }
+.flip-back ul { list-style: none; }
+.flip-back li {
+    padding: .55rem 1.4rem; margin: .4rem 0; border-radius: 50px;
+    background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.3); font-weight: 500;
+}
+
+/* Why */
+.why { max-width: none; background: linear-gradient(180deg, #fff, #f3f1fb); }
+.why > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.8rem; margin-top: 3rem; perspective: 1000px; }
+.why-card {
+    background: #fff; border-radius: 22px; padding: 2.2rem 1.8rem; text-align: center;
+    box-shadow: 0 12px 40px rgba(102,126,234,.14); border-top: 4px solid var(--p1);
+}
+.why-icon {
+    width: 76px; height: 76px; border-radius: 22px; margin: 0 auto 1.2rem;
+    display: grid; place-items: center; font-size: 1.9rem; color: #fff;
+    background: var(--grad); box-shadow: 0 14px 28px rgba(118,75,162,.4);
+    transform: translateZ(45px);
+}
+.why-card h3 { margin-bottom: .5rem; transform: translateZ(25px); }
+.why-card p { color: #777; font-size: .95rem; transform: translateZ(15px); }
+
+/* Contact */
+.contact { background: linear-gradient(135deg, #3a2f8f 0%, var(--p2) 100%); color: #fff; }
+.contact .section { padding-bottom: 90px; }
+.contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; perspective: 1200px; }
+.contact-info h3 { font-size: 1.8rem; margin-bottom: 2rem; }
+.contact-item { display: flex; align-items: center; margin-bottom: 1.5rem; font-size: 1.1rem; }
+.contact-item a { color: #fff; text-decoration: none; }
+.contact-item a:hover { text-decoration: underline; }
+.contact-item i {
+    font-size: 1.2rem; margin-right: 1.1rem; width: 46px; height: 46px; border-radius: 14px;
+    display: grid; place-items: center; background: rgba(255,255,255,.18); flex-shrink: 0;
+}
+.map-container { height: 320px; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,.35); }
+
+/* Footer */
+.footer { background: #14122b; color: #cfcde6; text-align: center; padding: 2.2rem 1rem; font-size: .92rem; }
+
+.to-top {
+    position: fixed; right: 22px; bottom: 22px; width: 48px; height: 48px; border: 0; border-radius: 50%;
+    background: var(--grad); color: #fff; cursor: pointer; font-size: 1rem;
+    box-shadow: 0 10px 25px rgba(118,75,162,.5); opacity: 0; pointer-events: none;
+    transform: translateY(20px); transition: all .3s; z-index: 900;
+}
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+.js .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.visible { opacity: 1; transform: none; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero p { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .scene { height: 340px; order: -1; }
+    .cube { --size: 150px; }
+    .face i { font-size: 2.2rem; }
+    .ring-1 { width: 260px; height: 260px; margin: -130px 0 0 -130px; }
+    .ring-2 { width: 310px; height: 310px; margin: -155px 0 0 -155px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .about-content, .contact-content { grid-template-columns: 1fr; gap: 2.5rem; }
+    .img-badge { left: 10px; }
+}
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-menu {
+        position: fixed; left: -100%; top: 64px; flex-direction: column; background: #fff;
+        width: 100%; text-align: center; transition: .3s; padding: 2rem 0; gap: 1.4rem;
+        box-shadow: 0 10px 27px rgba(0,0,0,.08);
+    }
+    .nav-menu.active { left: 0; }
+    .section { padding: 70px 1rem; }
+    .hero { padding-top: 90px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .js .reveal { opacity: 1; transform: none; }
+}
+
+
+/* v3 additions */
+.flip-face.ds { background: linear-gradient(145deg, #7c5cff, #4b2fb8); }
+.flip-face.ai { background: linear-gradient(145deg, #ff8a5c, #d6336c); }
+.flip-back li { font-size: .92rem; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; perspective: 1200px; }
+.shot { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #667eea, #764ba2); box-shadow: 0 14px 40px rgba(0,0,0,.15); }
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.shot:hover img { transform: scale(1.08); }
+.shot figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.2rem 1.2rem .9rem; color: #fff; font-weight: 600; background: linear-gradient(transparent, rgba(20,18,43,.85)); }
+.contact-content { grid-template-columns: 1fr !important; max-width: 640px; margin: 0 auto; }
+.location { background: #f8fafc; }
+.location .section-sub { margin-bottom: 2rem; }
+.location .section-sub i { color: var(--p1); margin-right: .3rem; }
+.location .map-container { height: 440px; box-shadow: 0 25px 60px rgba(0,0,0,.18); }
+.loc-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+.btn-solid { background: var(--grad); color: #fff; box-shadow: 0 10px 28px rgba(118,75,162,.4); }
+.btn-solid:hover { transform: translateY(-4px); }
+.btn-outline { color: var(--p2); border-color: var(--p2); }
+.btn-outline:hover { background: var(--p2); color: #fff; transform: translateY(-4px); }
+@media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .gallery-grid { grid-template-columns: 1fr; } .location .map-container { height: 320px; } }
+
+/* v4 additions: admission form */
+.admission { max-width: none; background: linear-gradient(180deg, #f3f1fb, #fff); }
+.admission > * { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.adm-layout { display: grid; grid-template-columns: 1.55fr .85fr; gap: 2.2rem; align-items: start; }
+.adm-card {
+    background: #fff; border-radius: 24px; padding: 2.4rem;
+    box-shadow: 0 20px 55px rgba(102,126,234,.18); border-top: 4px solid var(--p1);
+}
+#admissionForm[hidden], .app-success[hidden] { display: none !important; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.form-grid .full { grid-column: 1 / -1; }
+.form-title {
+    display: flex; align-items: center; gap: .7rem; font-size: 1.05rem; color: var(--p2);
+    margin-top: .9rem; padding-bottom: .5rem; border-bottom: 1px dashed #dcd9ee;
+}
+.form-title:first-child { margin-top: 0; }
+.form-title span {
+    width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--grad); color: #fff; font-size: .8rem; flex-shrink: 0;
+}
+.field { position: relative; }
+.field .ico { position: absolute; left: 1rem; top: 1.2rem; color: var(--p1); font-size: .95rem; pointer-events: none; }
+.field input, .field select, .field textarea {
+    width: 100%; padding: 1.55rem 1rem .55rem 2.8rem; border: 1.5px solid #dcd9ee; border-radius: 14px;
+    font: inherit; font-size: .98rem; color: var(--text); background: #fff; transition: border-color .25s, box-shadow .25s;
+}
+.field textarea { resize: vertical; min-height: 96px; }
+.field input:focus, .field select:focus, .field textarea:focus {
+    outline: none; border-color: var(--p1); box-shadow: 0 0 0 4px rgba(102,126,234,.15);
+}
+.field label {
+    position: absolute; left: 2.8rem; top: 1rem; color: #888; font-size: .95rem;
+    pointer-events: none; transition: all .2s ease;
+}
+.field input:focus + label, .field input:not(:placeholder-shown) + label,
+.field textarea:focus + label, .field textarea:not(:placeholder-shown) + label,
+.field.static label { top: .38rem; font-size: .7rem; color: var(--p2); font-weight: 500; }
+.field .err { display: none; color: #d6336c; font-size: .78rem; margin: .3rem .4rem 0; }
+.field.invalid .err, .check-field.invalid .err { display: block; }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: #d6336c; }
+.field.invalid input:focus, .field.invalid select:focus { box-shadow: 0 0 0 4px rgba(214,51,108,.14); }
+.check-field label { display: flex; gap: .7rem; align-items: flex-start; font-size: .92rem; color: #555; cursor: pointer; }
+.check-field input { margin-top: .3rem; width: 18px; height: 18px; accent-color: var(--p2); flex-shrink: 0; }
+.check-field .err { display: none; color: #d6336c; font-size: .78rem; margin: .3rem 0 0 1.7rem; }
+.submit-btn { width: 100%; justify-content: center; border: 0; cursor: pointer; font-family: inherit; font-size: 1.05rem; margin-top: .4rem; }
+.submit-btn i { font-size: 1.3rem; }
+.form-note { font-size: .82rem; color: #888; text-align: center; margin-top: .9rem; }
+
+.adm-aside {
+    background: var(--grad); color: #fff; border-radius: 24px; padding: 2.2rem;
+    box-shadow: 0 25px 60px rgba(118,75,162,.4); position: sticky; top: 100px;
+}
+.adm-aside h3 { font-size: 1.2rem; margin-bottom: 1rem; display: flex; gap: .6rem; align-items: center; }
+.doc-list { list-style: none; margin-bottom: 1.6rem; }
+.doc-list li { display: flex; gap: .7rem; padding: .45rem 0; font-size: .95rem; }
+.doc-list i { color: #ffd86b; margin-top: .35rem; }
+.aside-contact { border-top: 1px solid rgba(255,255,255,.3); padding-top: 1.4rem; }
+.aside-contact p { font-size: .92rem; opacity: .92; }
+.aside-link {
+    display: flex; align-items: center; gap: .8rem; color: #fff; text-decoration: none; font-weight: 500;
+    margin-top: .8rem; padding: .7rem 1rem; border-radius: 14px; background: rgba(255,255,255,.16); transition: background .3s;
+}
+.aside-link:hover { background: rgba(255,255,255,.3); }
+
+.app-success { text-align: center; padding: 2rem 1rem; }
+.app-success .tick {
+    width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 1.2rem; display: grid; place-items: center;
+    font-size: 2.4rem; color: #fff; background: linear-gradient(145deg, #25d366, #128c7e); box-shadow: 0 14px 30px rgba(37,211,102,.4);
+}
+.app-success h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--p2); }
+.app-success p { color: #666; max-width: 480px; margin: .7rem auto 1.6rem; }
+.app-success .actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-wa { background: linear-gradient(145deg, #25d366, #128c7e); color: #fff; box-shadow: 0 10px 28px rgba(18,140,126,.4); }
+.btn-wa:hover { transform: translateY(-4px); }
+button.btn { cursor: pointer; font-family: inherit; font-size: 1rem; background-color: transparent; }
+button.btn.btn-outline { background: transparent; }
+button.btn.btn-outline:hover { background: var(--p2); }
+
+@media (max-width: 1000px) {
+    .nav-menu { gap: .9rem; }
+    .nav-menu a { font-size: .88rem; }
+    .logo { font-size: 1.3rem; }
+}
+@media (max-width: 900px) {
+    .adm-layout { grid-template-columns: 1fr; }
+    .adm-aside { position: static; }
+}
+@media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .adm-card { padding: 1.6rem 1.2rem; }
+    .adm-aside { padding: 1.6rem 1.2rem; }
+}
+
+/* v5 additions: installable app */
+.contact-item[hidden], .aside-contact[hidden], .aside-link[hidden], #installBtn[hidden] { display: none !important; }
+button.btn.btn-ghost { background: rgba(255,255,255,.1); color: #fff; }
+button.btn.btn-ghost:hover { background: rgba(255,255,255,.25); }
+.toast {
+    position: fixed; left: 50%; bottom: calc(28px + env(safe-area-inset-bottom)); transform: translate(-50%, 20px);
+    max-width: calc(100% - 2rem); padding: .9rem 1.4rem; border-radius: 14px; background: #14122b; color: #fff;
+    font-size: .95rem; text-align: center; box-shadow: 0 14px 40px rgba(0,0,0,.35);
+    opacity: 0; transition: all .35s ease; z-index: 3000;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.to-top { bottom: calc(22px + env(safe-area-inset-bottom)); }
+@media (display-mode: standalone) {
+    .navbar { padding-top: calc(1rem + env(safe-area-inset-top)); }
+    .hero { padding-top: calc(110px + env(safe-area-inset-top)); }
+}
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo"><i class="fas fa-graduation-cap"></i> ASRD College</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Programs</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#admission">Admission</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#location">Location</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+
+        <div class="hero-inner">
+            <div class="hero-content">
+                <a href="#admission" class="badge"><i class="fas fa-star"></i> Admissions Open</a>
+                <h1>Shaping <span class="grad-text">Future Leaders</span></h1>
+                <p>Anam Sanjeeva Reddy Degree College, where excellence meets opportunity.</p>
+                <div class="hero-buttons">
+                    <a href="#admission" class="btn btn-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="#courses" class="btn btn-ghost">Explore Programs</a>
+                    <a href="#contact" class="btn btn-ghost">Visit Campus</a>
+                    <button type="button" class="btn btn-ghost" id="installBtn" hidden><i class="fas fa-download"></i> Install App</button>
+                </div>
+            </div>
+
+            <!-- 3D scene -->
+            <div class="scene" id="scene" aria-hidden="true">
+                <div class="cube" id="cube">
+                    <div class="face front"><i class="fas fa-book-open"></i><span>Arts</span></div>
+                    <div class="face back"><i class="fas fa-flask"></i><span>Science</span></div>
+                    <div class="face right"><i class="fas fa-chart-line"></i><span>Commerce</span></div>
+                    <div class="face left"><i class="fas fa-microchip"></i><span>AI</span></div>
+                    <div class="face top"><i class="fas fa-graduation-cap"></i><span>ASRD</span></div>
+                    <div class="face bottom"><i class="fas fa-database"></i><span>Data</span></div>
+                </div>
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="float-chip chip-1"><i class="fas fa-atom"></i></div>
+                <div class="float-chip chip-2"><i class="fas fa-calculator"></i></div>
+                <div class="float-chip chip-3"><i class="fas fa-pen-nib"></i></div>
+            </div>
+        </div>
+
+        <a href="#about" class="scroll-hint" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-wrap">
+        <div class="stats">
+            <div class="stat tilt"><h3><span class="count" data-target="8">0</span>+</h3><p>Years of Excellence</p></div>
+            <div class="stat tilt"><h3><span class="count" data-target="5">0</span></h3><p>Degree Programs</p></div>
+            <div class="stat tilt"><h3><span class="count" data-target="1000">0</span>+</h3><p>Students Nurtured</p></div>
+            <div class="stat tilt"><h3><span class="count" data-target="100">0</span>%</h3><p>Commitment to Quality</p></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about">
+        <h2 class="section-title reveal">About Our College</h2>
+        <div class="about-content">
+            <div class="about-text reveal">
+                <h3>8+ Years of Academic Excellence</h3>
+                <p>Established with a vision to provide quality education, Anam Sanjeeva Reddy Degree College has been nurturing young minds for over eight years. Located in a serene environment, our campus fosters holistic development and academic excellence.</p>
+                <p>We offer state-of-the-art infrastructure, experienced faculty, and a vibrant campus life that prepares students for global challenges.</p>
+                <ul class="checks">
+                    <li><i class="fas fa-circle-check"></i> Experienced and dedicated faculty</li>
+                    <li><i class="fas fa-circle-check"></i> Modern laboratories and classrooms</li>
+                    <li><i class="fas fa-circle-check"></i> Holistic, student-centred campus life</li>
+                </ul>
+            </div>
+            <div class="about-image reveal tilt" data-tilt-max="8">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="College campus" loading="lazy" onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,#667eea,#764ba2)';this.parentNode.style.minHeight='260px'">
+                <div class="img-badge"><strong>8+</strong><span>Years</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs: 3D flip title cards -->
+    <section id="courses" class="section">
+        <h2 class="section-title reveal">Our Programs</h2>
+        <p class="section-sub reveal">Hover or tap a card to flip it and see what each stream offers.</p>
+        <div class="courses-grid">
+            <div class="flip-card reveal" tabindex="0">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front arts">
+                        <div class="glow"></div>
+                        <i class="fas fa-palette"></i>
+                        <h3>B.A. Arts</h3>
+                        <p>Critical thinking and cultural understanding.</p>
+                        <span class="hint">Flip <i class="fas fa-rotate"></i></span>
+                    </div>
+                    <div class="flip-face flip-back arts">
+                        <h4>B.A. Subjects</h4>
+                        <ul>
+                            <li>History</li>
+                            <li>Economics</li>
+                            <li>Political Science</li>
+                            <li>And more</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card reveal" tabindex="0">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front science">
+                        <div class="glow"></div>
+                        <i class="fas fa-flask"></i>
+                        <h3>B.Sc. Science</h3>
+                        <p>Modern laboratories and research opportunities.</p>
+                        <span class="hint">Flip <i class="fas fa-rotate"></i></span>
+                    </div>
+                    <div class="flip-face flip-back science">
+                        <h4>B.Sc. Subjects</h4>
+                        <ul>
+                            <li>Mathematics</li>
+                            <li>Physics</li>
+                            <li>Chemistry</li>
+                            <li>Computer Science</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card reveal" tabindex="0">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front commerce">
+                        <div class="glow"></div>
+                        <i class="fas fa-chart-line"></i>
+                        <h3>B.Com Commerce</h3>
+                        <p>Professional preparation for corporate success.</p>
+                        <span class="hint">Flip <i class="fas fa-rotate"></i></span>
+                    </div>
+                    <div class="flip-face flip-back commerce">
+                        <h4>B.Com Subjects</h4>
+                        <ul>
+                            <li>Accounting</li>
+                            <li>Finance</li>
+                            <li>Business Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card reveal" tabindex="0">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front ds">
+                        <div class="glow"></div>
+                        <i class="fas fa-database"></i>
+                        <h3>B.Sc. Data Science</h3>
+                        <p>Turn data into decisions with modern analytics.</p>
+                        <span class="hint">Flip <i class="fas fa-rotate"></i></span>
+                    </div>
+                    <div class="flip-face flip-back ds">
+                        <h4>Data Science</h4>
+                        <ul>
+                            <li>Statistics &amp; Probability</li>
+                            <li>Python Programming</li>
+                            <li>Data Analysis &amp; Visualization</li>
+                            <li>Machine Learning Basics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card reveal" tabindex="0">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front ai">
+                        <div class="glow"></div>
+                        <i class="fas fa-microchip"></i>
+                        <h3>B.Sc. Artificial Intelligence</h3>
+                        <p>Build intelligent systems for the future.</p>
+                        <span class="hint">Flip <i class="fas fa-rotate"></i></span>
+                    </div>
+                    <div class="flip-face flip-back ai">
+                        <h4>Artificial Intelligence</h4>
+                        <ul>
+                            <li>Machine Learning</li>
+                            <li>Neural Networks</li>
+                            <li>Natural Language Processing</li>
+                            <li>Computer Vision</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why us -->
+    <section id="why" class="section why">
+        <h2 class="section-title reveal">Why Choose Us</h2>
+        <div class="why-grid">
+            <article class="why-card tilt reveal">
+                <div class="why-icon"><i class="fas fa-chalkboard-user"></i></div>
+                <h3>Expert Faculty</h3>
+                <p>Experienced teachers who mentor every student personally.</p>
+            </article>
+            <article class="why-card tilt reveal">
+                <div class="why-icon"><i class="fas fa-microscope"></i></div>
+                <h3>Modern Labs</h3>
+                <p>Well-equipped laboratories for hands-on learning.</p>
+            </article>
+            <article class="why-card tilt reveal">
+                <div class="why-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Serene Campus</h3>
+                <p>A calm environment that supports focus and growth.</p>
+            </article>
+            <article class="why-card tilt reveal">
+                <div class="why-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>Career Ready</h3>
+                <p>Skills and confidence to meet global challenges.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Admission -->
+    <section id="admission" class="section admission">
+        <h2 class="section-title reveal">Apply for Admission</h2>
+        <p class="section-sub reveal">Fill in the form below. Your application is sent to the college on WhatsApp.</p>
+
+        <div class="adm-layout">
+            <div class="adm-card reveal">
+                <form id="admissionForm" novalidate>
+                    <div class="form-grid">
+
+                        <h3 class="form-title full"><span>1</span> Personal details</h3>
+
+                        <div class="field full">
+                            <i class="fas fa-user ico"></i>
+                            <input type="text" id="fullName" name="fullName" placeholder=" " autocomplete="name" maxlength="80" aria-required="true">
+                            <label for="fullName">Full name *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field full">
+                            <i class="fas fa-people-roof ico"></i>
+                            <input type="text" id="parentName" name="parentName" placeholder=" " maxlength="80" aria-required="true">
+                            <label for="parentName">Father's / Mother's name *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field static">
+                            <i class="fas fa-cake-candles ico"></i>
+                            <input type="date" id="dob" name="dob" autocomplete="bday" aria-required="true">
+                            <label for="dob">Date of birth *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field static">
+                            <i class="fas fa-venus-mars ico"></i>
+                            <select id="gender" name="gender" aria-required="true">
+                                <option value="">Select</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                            <label for="gender">Gender *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field">
+                            <i class="fas fa-phone ico"></i>
+                            <input type="tel" id="phone" name="phone" placeholder=" " inputmode="numeric" autocomplete="tel" maxlength="16" aria-required="true">
+                            <label for="phone">Mobile number *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field">
+                            <i class="fas fa-envelope ico"></i>
+                            <input type="email" id="email" name="email" placeholder=" " autocomplete="email" maxlength="100">
+                            <label for="email">Email (optional)</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <h3 class="form-title full"><span>2</span> Address</h3>
+
+                        <div class="field">
+                            <i class="fas fa-house ico"></i>
+                            <input type="text" id="village" name="village" placeholder=" " autocomplete="address-level2" maxlength="80" aria-required="true">
+                            <label for="village">Village / Town *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field">
+                            <i class="fas fa-location-dot ico"></i>
+                            <input type="text" id="district" name="district" placeholder=" " autocomplete="address-level1" maxlength="60" aria-required="true">
+                            <label for="district">District *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field full">
+                            <i class="fas fa-map-pin ico"></i>
+                            <input type="text" id="pin" name="pin" placeholder=" " inputmode="numeric" autocomplete="postal-code" maxlength="6" aria-required="true">
+                            <label for="pin">PIN code *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <h3 class="form-title full"><span>3</span> Academic details</h3>
+
+                        <div class="field static">
+                            <i class="fas fa-book ico"></i>
+                            <select id="qualification" name="qualification" aria-required="true">
+                                <option value="">Select</option>
+                                <option>Intermediate / 10+2</option>
+                                <option>Diploma</option>
+                                <option>Other</option>
+                            </select>
+                            <label for="qualification">Previous qualification *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field">
+                            <i class="fas fa-building-columns ico"></i>
+                            <input type="text" id="board" name="board" placeholder=" " maxlength="80" aria-required="true">
+                            <label for="board">Board / University *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field">
+                            <i class="fas fa-calendar-check ico"></i>
+                            <input type="number" id="yop" name="yop" placeholder=" " inputmode="numeric" min="1995" step="1" aria-required="true">
+                            <label for="yop">Year of passing *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field">
+                            <i class="fas fa-percent ico"></i>
+                            <input type="number" id="percent" name="percent" placeholder=" " inputmode="decimal" min="0" max="100" step="0.01" aria-required="true">
+                            <label for="percent">Marks percentage *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <h3 class="form-title full"><span>4</span> Program choice</h3>
+
+                        <div class="field static">
+                            <i class="fas fa-graduation-cap ico"></i>
+                            <select id="program" name="program" aria-required="true">
+                                <option value="">Select</option>
+                                <option>B.A. - Arts</option>
+                                <option>B.Sc. - Science</option>
+                                <option>B.Com - Commerce</option>
+                                <option>B.Sc. - Data Science</option>
+                                <option>B.Sc. - Artificial Intelligence</option>
+                            </select>
+                            <label for="program">Program applying for *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field static">
+                            <i class="fas fa-language ico"></i>
+                            <select id="medium" name="medium" aria-required="true">
+                                <option value="">Select</option>
+                                <option>English</option>
+                                <option>Telugu</option>
+                            </select>
+                            <label for="medium">Medium of instruction *</label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="field full">
+                            <i class="fas fa-comment-dots ico"></i>
+                            <textarea id="message" name="message" placeholder=" " rows="3" maxlength="400"></textarea>
+                            <label for="message">Message or questions (optional)</label>
+                        </div>
+
+                        <div class="check-field full">
+                            <label>
+                                <input type="checkbox" id="declare" name="declare">
+                                <span>I declare that the information given above is correct to the best of my knowledge.</span>
+                            </label>
+                            <small class="err" role="alert"></small>
+                        </div>
+
+                        <div class="full">
+                            <button type="submit" class="btn btn-wa submit-btn"><i class="fab fa-whatsapp"></i> Submit Application on WhatsApp</button>
+                            <p class="form-note"><i class="fas fa-lock"></i> Your details go only to the college. The application is received once you tap Send in WhatsApp.</p>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="app-success" id="appSuccess" hidden>
+                    <div class="tick"><i class="fas fa-check"></i></div>
+                    <h3>Your application is ready</h3>
+                    <p id="successText">WhatsApp should have opened with your details already filled in. <strong>Tap Send in WhatsApp</strong> to submit it to the college. If it did not open, use the button below.</p>
+                    <div class="actions">
+                        <a class="btn btn-wa" id="waOpenLink" href="#" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Open WhatsApp</a>
+                        <button type="button" class="btn btn-outline" id="newApplication"><i class="fas fa-rotate-left"></i> New application</button>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="adm-aside reveal">
+                <h3><i class="fas fa-folder-open"></i> Documents needed</h3>
+                <ul class="doc-list">
+                    <li><i class="fas fa-circle-check"></i> 10th and Intermediate marks memos</li>
+                    <li><i class="fas fa-circle-check"></i> Aadhaar card copy</li>
+                    <li><i class="fas fa-circle-check"></i> Passport-size photographs</li>
+                    <li><i class="fas fa-circle-check"></i> Caste certificate (if applicable)</li>
+                </ul>
+                <div class="aside-contact" id="asideContact" hidden>
+                    <p>Questions about admission? Reach us directly.</p>
+                    <a class="aside-link" id="asideWa" href="#" target="_blank" rel="noopener" hidden><i class="fab fa-whatsapp"></i> <span></span></a>
+                    <a class="aside-link" id="asidePhone" href="#" hidden><i class="fas fa-phone"></i> <span></span></a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <h2 class="section-title reveal">Campus Gallery</h2>
+        <p class="section-sub reveal">A look at life at Anam Sanjeeva Reddy Degree College.</p>
+        <div class="gallery-grid">
+            <figure class="shot reveal tilt" data-tilt-max="6">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=75" alt="College Building" loading="lazy" onerror="this.remove()">
+                <figcaption>College Building</figcaption>
+            </figure>
+            <figure class="shot reveal tilt" data-tilt-max="6">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=75" alt="Campus Grounds" loading="lazy" onerror="this.remove()">
+                <figcaption>Campus Grounds</figcaption>
+            </figure>
+            <figure class="shot reveal tilt" data-tilt-max="6">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=75" alt="Classroom" loading="lazy" onerror="this.remove()">
+                <figcaption>Classroom</figcaption>
+            </figure>
+            <figure class="shot reveal tilt" data-tilt-max="6">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=75" alt="Science Laboratory" loading="lazy" onerror="this.remove()">
+                <figcaption>Science Laboratory</figcaption>
+            </figure>
+            <figure class="shot reveal tilt" data-tilt-max="6">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=75" alt="Library" loading="lazy" onerror="this.remove()">
+                <figcaption>Library</figcaption>
+            </figure>
+            <figure class="shot reveal tilt" data-tilt-max="6">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=75" alt="Student Life" loading="lazy" onerror="this.remove()">
+                <figcaption>Student Life</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="section">
+            <h2 class="section-title light reveal">Visit Us</h2>
+            <div class="contact-content">
+                <div class="contact-info reveal">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Anam Sanjeeva Reddy Degree College<br>Atmakur, Andhra Pradesh</span>
+                    </div>
+                    <!-- Phone, WhatsApp and email appear only when filled in config.js -->
+                    <div class="contact-item" id="ciPhone" hidden>
+                        <i class="fas fa-phone"></i>
+                        <span><a id="ciPhoneLink" href="#"></a></span>
+                    </div>
+                    <div class="contact-item" id="ciWa" hidden>
+                        <i class="fab fa-whatsapp"></i>
+                        <span><a id="ciWaLink" href="#" target="_blank" rel="noopener">WhatsApp us for admissions</a></span>
+                    </div>
+                    <div class="contact-item" id="ciMail" hidden>
+                        <i class="fas fa-envelope"></i>
+                        <span><a id="ciMailLink" href="#"></a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <div class="section">
+            <h2 class="section-title reveal">Find Us</h2>
+            <p class="section-sub reveal"><i class="fas fa-location-dot"></i> Anam Sanjeeva Reddy Degree College, Atmakur, Andhra Pradesh</p>
+            <div class="map-container reveal">
+                    <iframe
+                        title="College location"
+                        src="https://www.google.com/maps?q=Anam+Sanjeeva+Reddy+Degree+College+Atmakur+Andhra+Pradesh&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            <div class="loc-buttons reveal">
+                <a class="btn btn-solid" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Anam+Sanjeeva+Reddy+Degree+College+Atmakur"><i class="fas fa-map"></i> Open in Google Maps</a>
+                <a class="btn btn-outline" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Anam+Sanjeeva+Reddy+Degree+College+Atmakur"><i class="fas fa-route"></i> Get Directions</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; <span id="year">2026</span> Anam Sanjeeva Reddy Degree College. All rights reserved. | Excellence in Education</p>
+    </footer>
+
+    <button class="to-top" id="toTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+(function () {
+    'use strict';
+
+    const $ = (s, c = document) => c.querySelector(s);
+    const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canHover = window.matchMedia('(hover: hover)').matches;
+
+    // College contact details come from config.js (nothing personal is hard-coded here)
+    const CFG = Object.assign({ whatsapp: '', phone: '', email: '' }, window.COLLEGE_CONFIG || {});
+    const fullNumber = v => {
+        const d = String(v || '').replace(/\D/g, '');
+        return d.length === 10 ? '91' + d : d;
+    };
+    const prettyNumber = n => n.length === 12 ? `+${n.slice(0, 2)} ${n.slice(2, 7)} ${n.slice(7)}` : '+' + n;
+    const waNum = fullNumber(CFG.whatsapp);
+    const phoneNum = fullNumber(CFG.phone);
+    const mailAddr = String(CFG.email || '').trim();
+
+    if (phoneNum.length >= 10) {
+        $('#ciPhone').hidden = false;
+        $('#ciPhoneLink').href = 'tel:+' + phoneNum;
+        $('#ciPhoneLink').textContent = prettyNumber(phoneNum);
+        $('#asidePhone').href = 'tel:+' + phoneNum;
+        $('#asidePhone span').textContent = 'Call ' + prettyNumber(phoneNum);
+        $('#asidePhone').hidden = false;
+        $('#asideContact').hidden = false;
+    }
+    if (waNum.length >= 10) {
+        $('#ciWa').hidden = false;
+        $('#ciWaLink').href = 'https://wa.me/' + waNum;
+        $('#asideWa').href = 'https://wa.me/' + waNum;
+        $('#asideWa span').textContent = 'WhatsApp ' + prettyNumber(waNum);
+        $('#asideWa').hidden = false;
+        $('#asideContact').hidden = false;
+    } else {
+        console.warn('config.js: set "whatsapp" so applications reach the college.');
+    }
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mailAddr)) {
+        $('#ciMail').hidden = false;
+        $('#ciMailLink').href = 'mailto:' + mailAddr;
+        $('#ciMailLink').textContent = mailAddr;
+    }
+
+    // Footer year
+    $('#year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const hamburger = $('#hamburger');
+    const navMenu = $('#navMenu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    $$('.nav-menu a').forEach(a => a.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }));
+
+    // Scroll effects: navbar, progress bar, back-to-top, active link
+    const navbar = $('#navbar');
+    const progress = $('#scrollProgress');
+    const toTop = $('#toTop');
+    const sections = $$('section[id]');
+    const links = $$('.nav-menu a');
+
+    function onScroll() {
+        const y = window.scrollY;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        navbar.classList.toggle('scrolled', y > 50);
+        progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+        toTop.classList.toggle('show', y > 600);
+
+        let current = 'home';
+        sections.forEach(s => { if (y >= s.offsetTop - 140) current = s.id; });
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                revealObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    $$('.reveal').forEach((el, i) => {
+        el.style.transitionDelay = (i % 4) * 90 + 'ms';
+        revealObserver.observe(el);
+    });
+
+    // Animated counters
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            const target = +el.dataset.target;
+            const duration = 1600;
+            const start = performance.now();
+            (function tick(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(target * eased);
+                if (t < 1) requestAnimationFrame(tick);
+            })(start);
+            counterObserver.unobserve(el);
+        });
+    }, { threshold: 0.6 });
+    $$('.count').forEach(c => counterObserver.observe(c));
+
+    // 3D tilt with glare on cards
+    if (canHover && !reduceMotion) {
+        $$('.tilt').forEach(card => {
+            const max = parseFloat(card.dataset.tiltMax) || 12;
+            const glare = document.createElement('div');
+            glare.className = 'glare';
+            card.appendChild(glare);
+
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width;
+                const py = (e.clientY - r.top) / r.height;
+                const rx = (0.5 - py) * max * 2;
+                const ry = (px - 0.5) * max * 2;
+                card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px) scale(1.02)`;
+                card.style.setProperty('--gx', px * 100 + '%');
+                card.style.setProperty('--gy', py * 100 + '%');
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+    }
+
+    // Hero 3D cube: follow the mouse, pause spin while interacting
+    const scene = $('#scene');
+    const cube = $('#cube');
+    if (scene && canHover && !reduceMotion) {
+        let idle;
+        scene.addEventListener('mousemove', (e) => {
+            const r = scene.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            scene.classList.add('interacting');
+            cube.style.animation = 'none';
+            scene.style.setProperty('--ry', px * 160 + 30 + 'deg');
+            scene.style.setProperty('--rx', -py * 90 - 10 + 'deg');
+            clearTimeout(idle);
+        });
+        scene.addEventListener('mouseleave', () => {
+            idle = setTimeout(() => {
+                scene.classList.remove('interacting');
+                cube.style.animation = '';
+                scene.style.removeProperty('--rx');
+                scene.style.removeProperty('--ry');
+            }, 600);
+        });
+    }
+
+    // Hero parallax for orbs and chips
+    const hero = $('.hero');
+    if (hero && canHover && !reduceMotion) {
+        const layers = [
+            ...$$('.orb').map((el, i) => ({ el, depth: (i + 1) * 12 })),
+        ];
+        hero.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth - 0.5;
+            const y = e.clientY / window.innerHeight - 0.5;
+            layers.forEach(({ el, depth }) => {
+                el.style.translate = `${x * depth}px ${y * depth}px`;
+            });
+        });
+    }
+
+    // Flip cards: tap to flip on touch devices
+    $$('.flip-card').forEach(card => {
+        card.addEventListener('click', () => {
+            if (!canHover) card.classList.toggle('flipped');
+        });
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.classList.toggle('flipped');
+            }
+        });
+    });
+
+    // ===== Admission form: validate, then send the application to WhatsApp =====
+    (function () {
+        const form = $('#admissionForm');
+        if (!form) return;
+
+        const DRAFT_KEY = 'asrd_admission_draft_v1';
+        const success = $('#appSuccess');
+        const waLink = $('#waOpenLink');
+
+        const today = new Date();
+        const pad = n => String(n).padStart(2, '0');
+        $('#dob').max = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+        $('#yop').max = today.getFullYear();
+
+        // Phone: accept +91 / 0 prefixes and spaces, return plain 10 digits
+        const cleanPhone = v => {
+            let d = v.replace(/\D/g, '');
+            if (d.length === 12 && d.startsWith('91')) d = d.slice(2);
+            else if (d.length === 11 && d.startsWith('0')) d = d.slice(1);
+            return d;
+        };
+
+        const rules = {
+            fullName:      v => v.length < 3 ? 'Please enter your full name' : (/\d/.test(v) ? 'Name should not contain numbers' : ''),
+            parentName:    v => v.length < 3 ? "Please enter your father's or mother's name" : (/\d/.test(v) ? 'Name should not contain numbers' : ''),
+            dob: v => {
+                if (!v) return 'Please select your date of birth';
+                const d = new Date(v + 'T00:00:00');
+                if (isNaN(d)) return 'Enter a valid date';
+                if (d > today) return 'Date of birth cannot be in the future';
+                let age = today.getFullYear() - d.getFullYear();
+                const m = today.getMonth() - d.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < d.getDate())) age--;
+                return (age < 15 || age > 45) ? 'Please check the date of birth' : '';
+            },
+            gender:        v => v ? '' : 'Please select gender',
+            phone:         v => /^[6-9]\d{9}$/.test(cleanPhone(v)) ? '' : 'Enter a valid 10-digit mobile number',
+            email:         v => (v && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) ? 'Enter a valid email address' : '',
+            village:       v => v.length < 2 ? 'Please enter your village or town' : '',
+            district:      v => v.length < 2 ? 'Please enter your district' : '',
+            pin:           v => /^\d{6}$/.test(v) ? '' : 'Enter a 6-digit PIN code',
+            qualification: v => v ? '' : 'Please select your qualification',
+            board:         v => v.length < 2 ? 'Please enter your board or university' : '',
+            yop: v => {
+                const y = Number(v);
+                const max = today.getFullYear();
+                return (v === '' || !Number.isInteger(y) || y < 1995 || y > max) ? `Enter a year between 1995 and ${max}` : '';
+            },
+            percent: v => {
+                if (v === '') return 'Please enter your marks percentage';
+                const n = Number(v);
+                return (isNaN(n) || n < 0 || n > 100) ? 'Percentage must be between 0 and 100' : '';
+            },
+            program:       v => v ? '' : 'Please choose a program',
+            medium:        v => v ? '' : 'Please choose a medium',
+            declare:       v => v ? '' : 'Please accept the declaration to continue'
+        };
+
+        const valueOf = el => el.type === 'checkbox' ? (el.checked ? '1' : '') : el.value.trim();
+
+        // Validate one field, show or clear its message. Returns true when valid.
+        function check(name) {
+            const el = form.elements[name];
+            const wrap = el.closest('.field, .check-field');
+            const msg = rules[name](valueOf(el));
+            wrap.classList.toggle('invalid', !!msg);
+            wrap.querySelector('.err').textContent = msg;
+            el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+            return !msg;
+        }
+
+        // Draft auto-save (per tab session, cleared after a successful submit)
+        function saveDraft() {
+            try {
+                const data = {};
+                [...form.elements].forEach(el => {
+                    if (el.name) data[el.name] = el.type === 'checkbox' ? el.checked : el.value;
+                });
+                sessionStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+            } catch (e) { /* storage unavailable: ignore */ }
+        }
+        function loadDraft() {
+            try {
+                const raw = sessionStorage.getItem(DRAFT_KEY);
+                if (!raw) return;
+                const data = JSON.parse(raw);
+                [...form.elements].forEach(el => {
+                    if (!el.name || !(el.name in data)) return;
+                    if (el.type === 'checkbox') el.checked = !!data[el.name];
+                    else el.value = data[el.name];
+                });
+            } catch (e) { /* ignore */ }
+        }
+        function clearDraft() {
+            try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) { /* ignore */ }
+        }
+        loadDraft();
+
+        form.addEventListener('input', e => {
+            const n = e.target.name;
+            if (n in rules && e.target.closest('.invalid')) check(n);
+            saveDraft();
+        });
+        form.addEventListener('change', e => {
+            const n = e.target.name;
+            if (n in rules && (e.target.closest('.invalid') || e.target.tagName === 'SELECT')) check(n);
+            saveDraft();
+        });
+        form.addEventListener('focusout', e => {
+            const n = e.target.name;
+            if (n in rules && n !== 'declare' && valueOf(e.target) !== '') check(n);
+        });
+
+        const fmtDob = v => v.split('-').reverse().join('-');
+
+        function buildMessage() {
+            const g = id => form.elements[id].value.trim();
+            const lines = [
+                '*New Admission Application*',
+                'Anam Sanjeeva Reddy Degree College',
+                '',
+                '*Personal details*',
+                `Name: ${g('fullName')}`,
+                `Father/Mother: ${g('parentName')}`,
+                `Date of birth: ${fmtDob(g('dob'))}`,
+                `Gender: ${g('gender')}`,
+                `Mobile: ${cleanPhone(g('phone'))}`,
+                `Email: ${g('email') || 'Not provided'}`,
+                '',
+                '*Address*',
+                `${g('village')}, ${g('district')} - ${g('pin')}`,
+                '',
+                '*Academic details*',
+                `Qualification: ${g('qualification')}`,
+                `Board/University: ${g('board')}`,
+                `Year of passing: ${g('yop')}`,
+                `Marks: ${g('percent')}%`,
+                '',
+                '*Program choice*',
+                `Program: ${g('program')}`,
+                `Medium: ${g('medium')}`
+            ];
+            if (g('message')) lines.push('', '*Message*', g('message'));
+            return lines.join('\n');
+        }
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            let firstBad = null;
+            Object.keys(rules).forEach(name => {
+                if (!check(name) && !firstBad) firstBad = form.elements[name];
+            });
+            if (firstBad) {
+                firstBad.focus({ preventScroll: true });
+                firstBad.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+                return;
+            }
+
+            // With a college number set in config.js the chat opens directly; without one,
+            // WhatsApp lets the student pick the college contact.
+            const url = `https://wa.me/${waNum}?text=${encodeURIComponent(buildMessage())}`;
+            if (!waNum) {
+                $('#successText').innerHTML = 'WhatsApp should have opened with your details filled in. <strong>Choose the college\'s WhatsApp contact and tap Send</strong> to submit it. If it did not open, use the button below.';
+            }
+            waLink.href = url;
+            form.hidden = true;
+            success.hidden = false;
+            clearDraft();
+            success.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+            window.open(url, '_blank', 'noopener');
+        });
+
+        $('#newApplication').addEventListener('click', () => {
+            form.reset();
+            $$('.invalid', form).forEach(w => { w.classList.remove('invalid'); w.querySelector('.err').textContent = ''; });
+            success.hidden = true;
+            form.hidden = false;
+            form.elements.fullName.focus();
+        });
+    })();
+
+    // ===== App mode: install button and offline support =====
+    (function () {
+        const installBtn = $('#installBtn');
+        let deferredPrompt = null;
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+        function toast(msg) {
+            const t = document.createElement('div');
+            t.className = 'toast';
+            t.textContent = msg;
+            document.body.appendChild(t);
+            requestAnimationFrame(() => t.classList.add('show'));
+            setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 5000);
+        }
+
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn && !isStandalone) installBtn.hidden = false;
+        });
+        window.addEventListener('appinstalled', () => {
+            deferredPrompt = null;
+            if (installBtn) installBtn.hidden = true;
+        });
+        // iPhone/iPad Safari has no install prompt, so the button shows the manual steps
+        if (installBtn && isIOS && !isStandalone) installBtn.hidden = false;
+
+        if (installBtn) installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                installBtn.hidden = true;
+            } else {
+                toast('On iPhone: tap the Share button, then "Add to Home Screen".');
+            }
+        });
+
+        // Offline support (needs the site to be served over https or localhost)
+        if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => { /* ignore */ });
+            });
+        }
+    })();
+})();
+
+</script>
+</body>
+</html>
